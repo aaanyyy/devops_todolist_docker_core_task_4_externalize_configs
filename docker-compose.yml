@@ -21,7 +21,7 @@ services:
     networks:
       - todoapp-net
     depends_on:
-      - ${MYSQL_HOST}
+      - "mysql"
     restart: unless-stopped
   mysql:
     image: mysql-local:3.0.0
@@ -32,7 +32,7 @@ services:
       dockerfile: Dockerfile.mysql
     container_name: my-sql
     ports:
-      - "${MYSQL_PORT}:${MYSQL_PORT}"
+      - "3306:3306"
     volumes:
       - todoapp-db-data:/var/lib/mysql
     environment:
